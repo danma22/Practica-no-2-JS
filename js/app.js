@@ -2,6 +2,8 @@
 
 var form1 = document.getElementById("form1")
 var form2 = document.getElementById("form2")
+var form3 = document.getElementById("form3")
+var form4 = document.getElementById("form4")
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -10,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	if (form2 != null) {
 		form2.addEventListener('submit', validarFormulario2);
+	}
+	if (form3 != null) {
+		form3.addEventListener('submit', validarFormulario3);
+	}
+	if (form4 != null) {
+		form4.addEventListener('submit', validarFormulario4);
 	}
 });
 
@@ -37,16 +45,6 @@ function validarFormulario1(e) {
 
 	this.submit();
 }
-
-function validateEmail(input){
-	var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-
-	if( validEmail.test(input.value) ){
-		return true;
-	}else{
-		return false;
-	}
-} 
 
 function validarFormulario2(e) {
 	e.preventDefault();
@@ -88,7 +86,6 @@ function validarFormulario2(e) {
 	if (email.value.length == 0) {
 		email.classList.add('is-invalid');
 		desc = desc + '<p>El campo email tiene un valor incorrecto</p>'
-		console.log(validateEmail(email))
 		validation = false
 	}
 
@@ -101,10 +98,105 @@ function validarFormulario2(e) {
 
 	if (!validation) {
 		$('#modal-danger').modal('show');
-		document.getElementById("desc").innerHTML = desc
+		document.getElementById("desc1").innerHTML = desc
 		return;
 	}
 
-	$('#modal-danger').modal('show');
+	$('#modal-success').modal('show');
+	desc = '<p>Usuario: ' + user.value + '</p>' + '<p>Nombre: ' + name.value + '</p>' + '<p>Apellido: ' + last.value + '</p>' + '<p>Correo: ' + email.value + '</p>'
+	document.getElementById("desc2").innerHTML = desc
 }
 
+function validarFormulario3(e){
+	e.preventDefault();
+	var clave = document.getElementById('clave');
+	var nameP = document.getElementById('nameP');
+	var categoria = document.getElementById('categoria');
+	var precioV = document.getElementById('precioV');
+	var precioC = document.getElementById('precioC');
+
+	clave.classList.remove('is-invalid');
+	nameP.classList.remove('is-invalid');
+	categoria.classList.remove('is-invalid');
+	precioV.classList.remove('is-invalid');
+	precioC.classList.remove('is-invalid');
+
+	let validation = true;
+	let desc = ''
+
+	if(clave.value.length == 0) {
+		clave.classList.add('is-invalid');
+		desc = desc + '<p>El campo clave está vació</p>'
+	  	validation = false
+	}
+
+	if (nameP.value.length == 0) {
+		nameP.classList.add('is-invalid');
+		desc = desc + '<p>El campo nombre del producto está vació</p>'
+		validation = false
+	}
+
+	if (categoria.value == null) {
+		categoria.classList.add('is-invalid');
+		desc = desc + '<p>El campo apellido está vació</p>'
+		validation = false
+	}
+
+	if (precioV.value == 0 || precioV.value == null) {
+		precioV.classList.add('is-invalid');
+		desc = desc + '<p>El campo precio de venta tiene una cantidad insuficiente</p>'
+		validation = false
+	}
+
+	if (precioC.value == 0 || precioC.value == null) {
+		precioC.classList.add('is-invalid');
+		desc = desc + '<p>El campo precio de venta tiene una cantidad insuficiente</p>'
+		validation = false
+	}
+
+	if (!validation) {
+		$('#modal-danger').modal('show');
+		document.getElementById("desc1").innerHTML = desc
+		return;
+	}
+
+	$('#modal-success').modal('show');
+	desc = '<p>Clave: ' + clave.value + '</p>' + '<p>Nombre: ' + nameP.value + '</p>' + '<p>Precio de venta: ' + precioV.value + '</p>' + '<p>Precio de compra: ' + precioC.value + '</p>'
+	document.getElementById("desc2").innerHTML = desc
+}
+
+function validarFormulario4(e){
+	e.preventDefault();
+	var clave = document.getElementById('clave');
+	var catName = document.getElementById('catName');
+	var prior = document.getElementById('prior');
+
+	clave.classList.remove('is-invalid');
+	catName.classList.remove('is-invalid');
+	prior.classList.remove('is-invalid');
+
+	let validation = true;
+	let desc = ''
+
+	if(clave.value.length == 0) {
+		clave.classList.add('is-invalid');
+		desc = desc + '<p>El campo clave de categoria está vacio</p>'
+	  	validation = false
+	}
+
+	if (catName.value.length == 0) {
+		catName.classList.add('is-invalid');
+		desc = desc + '<p>El campo nombre de categoria está vacio</p>'
+		validation = false
+	}
+
+	if (!validation) {
+		$('#modal-danger').modal('show');
+		document.getElementById("desc1").innerHTML = desc
+		return;
+	}
+
+	$('#modal-success').modal('show');
+	desc = '<p>Clave: ' + clave.value + '</p>' + '<p>Nombre: ' + catName.value + '</p>'
+	document.getElementById("desc2").innerHTML = desc
+}

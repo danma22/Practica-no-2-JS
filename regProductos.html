@@ -85,13 +85,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="regUsuarios.html" class="nav-link active">
+                <a href="regUsuarios.html" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registro de usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="regProductos.html" class="nav-link">
+                <a href="regProductos.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registro de productos</p>
                 </a>
@@ -118,12 +118,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registro de usuarios</h1>
+            <h1>Registro de productos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-              <li class="breadcrumb-item active">Registro de usuarios</li>
+              <li class="breadcrumb-item active">Registro de productos</li>
             </ol>
           </div>
         </div>
@@ -138,62 +138,54 @@
           <div class="col-md-10">
             <!-- /.card -->
             <!-- Horizontal Form -->
-            <div class="card card-info">
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Registro para usuarios</h3>
+                <h3 class="card-title">Registro para productos</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" method="post" id="form2">
+              <form class="form-horizontal" method="post" id="form3">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="user" class="col-sm-2 col-form-label">Usuario</label>
+                    <label for="clave" class="col-sm-2 col-form-label">Clave</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="user" placeholder="Nombre de usuario">
+                      <input type="text" class="form-control" id="clave" placeholder="Clave de producto">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                    <label for="nameP" class="col-sm-2 col-form-label">Nombre del producto</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="name" placeholder="Nombre">
+                      <input type="text" class="form-control" id="nameP" placeholder="Nombre del producto">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="last" class="col-sm-2 col-form-label">Apellido</label>
+                    <label for="categoria" class="col-sm-2 col-form-label">Categoria</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="last" placeholder="Apellido">
+                      <select class="form-control" id="categoria">
+                        <option selected="selected">Deportivo</option>
+                        <option>Electrodoméstico</option>
+                        <option>Juguetes</option>
+                        <option>Electrónicos</option>
+                        <option>Jardinería</option>
+                      </select>
+                    </div> 
+                  </div>
+                  <div class="form-group row">
+                    <label for="precioV" class="col-sm-2 col-form-label">Precio de venta</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="precioV" placeholder="Precio de venta">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <label for="precioC" class="col-sm-2 col-form-label">Precio de compra</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pass" class="col-sm-2 col-form-label">Contraseña</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="pass" placeholder="Contraseña">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="Cpass" class="col-sm-2 col-form-label">Confirmar contraseña</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="Cpass" placeholder="Confirmación de contraseña">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">¿Recibir notificaciones y noticias?</label>
-                      </div>
+                      <input type="number" class="form-control" id="precioC" placeholder="Precio de compra">
                     </div>
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Añadir</button>
+                  <button type="submit" class="btn btn-primary">Añadir</button>
                   <button type="submit" class="btn btn-default float-right">Cancel</button>
                 </div>
                 <!-- /.card-footer -->
