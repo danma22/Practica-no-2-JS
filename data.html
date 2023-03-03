@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Danma | Dashboard</title>
+  <title>AdminLTE 3 | DataTables</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
@@ -25,7 +29,6 @@
         <a href="dashboard.html" class="nav-link">Home</a>
       </li>
     </ul>
-
   </nav>
   <!-- /.navbar -->
 
@@ -76,7 +79,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Registros
@@ -97,7 +100,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="regCategorias.html" class="nav-link active">
+                <a href="regCategorias.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registro de categorias</p>
                 </a>
@@ -117,7 +120,7 @@
 
           <!-- Datatables -->
           <li class="nav-item">
-            <a href="data.html" class="nav-link">
+            <a href="data.html" class="nav-link active">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 DataTables
@@ -131,6 +134,7 @@
     <!-- /.sidebar -->
   </aside>
 
+  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -138,12 +142,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registro de categorias</h1>
+            <h1>DataTables</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-              <li class="breadcrumb-item active">Registro de categorias</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
             </ol>
           </div>
         </div>
@@ -153,58 +157,44 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <button type="button" id="btn1" class="btn btn-default float-right">Show data</button>
         <div class="row">
-          <!-- left column -->
-          <div class="col-md-10">
-            <!-- /.card -->
-            <!-- Horizontal Form -->
+          <div class="col-12">
             <div class="card">
-              <div class="card-header" style="background-color: #cd5c5c;">
-                <h3 class="card-title text-white">Registro para categorias</h3>
-              </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal" method="post" id="form4">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="clave" class="col-sm-2 col-form-label">Clave</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="clave" placeholder="Clave del producto">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="catName" class="col-sm-2 col-form-label">Nombre de categoria</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="catName" placeholder="Nombre de categoria">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="prior">
-                        <label class="form-check-label" for="prior">Prioritario</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn text-white" style="background-color: #cd5c5c;">Añadir</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Descipción</th>
+                    <th>Clave(s)</th>
+                    <th>Precio</th>
+                  </tr>
+                  </thead>
+                  <tbody id="contentTable">
+                  
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Descipción</th>
+                      <th>Clave(s)</th>
+                      <th>Precio</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
             <!-- /.card -->
 
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -224,68 +214,40 @@
 </div>
 <!-- ./wrapper -->
 
-
-<div class="modal fade" id="modal-danger">
-  <div class="modal-dialog">
-    <div class="modal-content bg-danger">
-      <div class="modal-header">
-        <h4 class="modal-title">Datos incorrectos</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="desc1">
-        
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-
-<div class="modal fade" id="modal-success">
-  <div class="modal-dialog">
-    <div class="modal-content bg-success">
-      <div class="modal-header">
-        <h4 class="modal-title">El usuario ha sido agregado exitosamente</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="desc2">
-        
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="dist/js/demo.js"></script> -->
-
-<script src="js/app.js"></script>
-<!-- Page specific script -->
+<script src="js/table.js"></script>
 <script>
-/*$(function () {
-  bsCustomFileInput.init();
-});*/
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
 </body>
 </html>

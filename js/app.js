@@ -86,6 +86,7 @@ function validarFormulario2(e) {
 	if (email.value.length == 0) {
 		email.classList.add('is-invalid');
 		desc = desc + '<p>El campo email tiene un valor incorrecto</p>'
+		console.log(validateEmail(email))
 		validation = false
 	}
 
