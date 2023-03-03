@@ -5,7 +5,7 @@ var form2 = document.getElementById("form2")
 var form3 = document.getElementById("form3")
 var form4 = document.getElementById("form4")
 
-
+// Se crea un evento al cargar todo el sitio para poder otorgar a cada formulario su respectiva función de validación
 document.addEventListener("DOMContentLoaded", function() {
 	if (form1 != null) {
 		form1.addEventListener('submit', validarFormulario1);
@@ -21,13 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 });
 
-  
+// Validación del formulario 1
 function validarFormulario1(e) {
+	/7 Se previene que se redireccione la página
 	e.preventDefault();
 	var user = document.getElementById('user').value;
 	var pass = document.getElementById('pass').value;
 	let validation = true;
-
+	
+	// Se valida cada uno de los campos del formulario
 	if(user.length == 0 || user != 'admin') {
 		document.getElementById('user').classList.add('is-invalid');
 	  	validation = false
@@ -42,10 +44,12 @@ function validarFormulario1(e) {
 		$('#modal-danger').modal('show');
 		return;
 	}
-
+	
+	// Al final se realiza la acción del botón
 	this.submit();
 }
 
+// Validación del formulario 2
 function validarFormulario2(e) {
 	e.preventDefault();
 	var user = document.getElementById('user');
@@ -54,7 +58,8 @@ function validarFormulario2(e) {
 	var email = document.getElementById('email');
 	var pass = document.getElementById('pass');
 	var cpass = document.getElementById('Cpass');
-
+	
+	// Se quita el estilo de inválido si es que lo tienen, por si no vuelven a cometer un error
 	user.classList.remove('is-invalid');
 	name.classList.remove('is-invalid');
 	last.classList.remove('is-invalid');
@@ -108,6 +113,7 @@ function validarFormulario2(e) {
 	document.getElementById("desc2").innerHTML = desc
 }
 
+// Validación del formulario 3
 function validarFormulario3(e){
 	e.preventDefault();
 	var clave = document.getElementById('clave');
@@ -166,6 +172,7 @@ function validarFormulario3(e){
 	document.getElementById("desc2").innerHTML = desc
 }
 
+// Validación del formulario 4
 function validarFormulario4(e){
 	e.preventDefault();
 	var clave = document.getElementById('clave');
