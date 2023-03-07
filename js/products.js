@@ -1,6 +1,8 @@
 
 'use strict'
 
+
+// Array con todos los productos de la lista
 const menu = [
     {
       id: 1,
@@ -69,7 +71,7 @@ const menu = [
     {
       id: 9,
       title: "Red Rider Trike",
-      category: "triciclos",
+      category: "zapatos",
       price: 1657.95,
       img: "imgs/tri1.jpg",
       desc: `Este robusto triciclo cuenta con construcción de acero, manillar de agarre cómodo y ruedas de conducción silenciosas.`,
@@ -124,18 +126,19 @@ const menu = [
     },
   ];
 
-
+// Al cargar la pagina, a traves de las funciones displayMenuItems y cargarBotones, se muestra el contenido dinámico
 window.addEventListener("DOMContentLoaded", function () {
     diplayMenuItems(menu);
     cargarBotones(menu);
 });
 
-//Items de productos
+// Función para mostrar las tarjetas de cada producto a partir del array de productos
 function diplayMenuItems(menuItems) {
     let content = "";
-    let lastLeftElement = Math.trunc(menuItems.length / 2);
-    let container = document.getElementById('leftCards')
+    let lastLeftElement = Math.trunc(menuItems.length / 2); // Forma de identificar cuando empezará la siguiente columna
+    let container = document.getElementById('leftCards') // Contenedor de las tarjetas
 
+    // Se recorre el array con los elementos y se crea el contenido de su tarjeta correspondiente
     menuItems.forEach((e, i) => {
         content += `<div class="card">
             <div class="row g-0">
@@ -163,33 +166,37 @@ function diplayMenuItems(menuItems) {
             </div>
         </div>`;
 
+        // Cuando el indice llega al limite de la columna izquierda, se cambia el contenedor donde se agregarán las tarjetas
         if (i == lastLeftElement) {
             container.innerHTML = content
             content = '';
             container = document.getElementById('rightCards')
         }
 
+        // Cuando llegué al último elemento, se muestra en la columna derecha
         if (i == menuItems.length-1){
             container.innerHTML = content
         }
     });
 }
 
-
+// Función para mostrar los botones
 function cargarBotones(menuItems){
+    //Se identifican las categorias a partir de la lista de elementos
     let categories = new Array();
     let btnsContainer = document.getElementById('btnsCategoria');
-    let contentBtns = `<label class="btn bg-primary active">
+    let contentBtns = `<label class="btn bg-primary active"> 
         <input type="radio" class="btnsCat" name="options" id="todo" autocomplete="off" checked> Todo
-    </label>`;
+    </label>`; // Se crea el contenido del primer botón, que representa todos los productos
     menuItems.forEach((e) => {
         categories.push(e.category);
-    });
+    }); // Se añaden las categorias de todos los elementos 
 
     let result = categories.filter((item,index)=>{
         return categories.indexOf(item) === index;
-    });
+    }); // Se filtra el resultado de categories y se obtiene un nuevo array: result
     
+    // Se recorre el arreglo result para definir los botones que apareceran
     result.forEach((e) => {
         let cat = e.charAt(0).toUpperCase() + e.slice(1);
         contentBtns += `<label class="btn bg-primary">
@@ -197,20 +204,24 @@ function cargarBotones(menuItems){
         </label>`;
     })
 
-    btnsContainer.innerHTML = contentBtns;
+    btnsContainer.innerHTML = contentBtns; // Se agrega los botones y se obtiene en un array los botones creados
     let filterBtns = btnsContainer.querySelectorAll('.btnsCat');
 
+    // Se recorren los botones para agregarles un evento de click
     filterBtns.forEach((btn) => {
         btn.addEventListener("click", function (e){
+            //Cada vez que se de click, como el id del boton es igual a la categoria en cada elemento del arreglo principal
+            //Se compara el id del boton con la categoria del item principal en un recorrido foreach
             let category = btn.id;
 
             let menuCategory = menuItems.filter(function (item) {
-                // console.log(menuItem.category);
+                // Si coincide con la categoría escogida, se añade a un nuevo arreglo
                 if (item.category === category) {
                     return item;
                 }
             });
 
+            // Se identifica si se dio click al boton tood y se muestras las tarjetas filtradas
             if (category == "todo") {
                 diplayMenuItems(menuItems);
               } else {

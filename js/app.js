@@ -1,13 +1,14 @@
 "use strict"
 
+// Formularios de las páginas index.html  regUsuarios.html  regCategorias.html  regProductos.html
 var form1 = document.getElementById("form1")
 var form2 = document.getElementById("form2")
 var form3 = document.getElementById("form3")
 var form4 = document.getElementById("form4")
 
-// Se crea un evento al cargar todo el sitio para poder otorgar a cada formulario su respectiva función de validación
+// Al momento de cargarse la página, se realiza la asignación de los eventos correspondientes a los formulario
 document.addEventListener("DOMContentLoaded", function() {
-	if (form1 != null) {
+	if (form1 != null) { //Solo se agrega el evento si
 		form1.addEventListener('submit', validarFormulario1);
 	}
 	if (form2 != null) {
@@ -21,15 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 });
 
-// Validación del formulario 1
+// Validar el formulario de login
 function validarFormulario1(e) {
-	/7 Se previene que se redireccione la página
 	e.preventDefault();
 	var user = document.getElementById('user').value;
 	var pass = document.getElementById('pass').value;
 	let validation = true;
-	
-	// Se valida cada uno de los campos del formulario
+
 	if(user.length == 0 || user != 'admin') {
 		document.getElementById('user').classList.add('is-invalid');
 	  	validation = false
@@ -44,22 +43,24 @@ function validarFormulario1(e) {
 		$('#modal-danger').modal('show');
 		return;
 	}
-	
-	// Al final se realiza la acción del botón
+
 	this.submit();
 }
 
-// Validación del formulario 2
+// Validar el formulario de usuario
 function validarFormulario2(e) {
+	// Se previene la acción por defecto del evento
 	e.preventDefault();
+
+	// Se obtiene el objeto que representa a los campos de entrada
 	var user = document.getElementById('user');
 	var name = document.getElementById('name');
 	var last = document.getElementById('last');
 	var email = document.getElementById('email');
 	var pass = document.getElementById('pass');
 	var cpass = document.getElementById('Cpass');
-	
-	// Se quita el estilo de inválido si es que lo tienen, por si no vuelven a cometer un error
+
+	// Se quitan las clases de es válido
 	user.classList.remove('is-invalid');
 	name.classList.remove('is-invalid');
 	last.classList.remove('is-invalid');
@@ -67,9 +68,11 @@ function validarFormulario2(e) {
 	pass.classList.remove('is-invalid');
 	cpass.classList.remove('is-invalid');
 
+	// Bandera de validación y descripción
 	let validation = true;
 	let desc = ''
 
+	// Validación de cada campo: si está vacio o no o si corresponde la contraseña o no
 	if(user.value.length == 0) {
 		user.classList.add('is-invalid');
 		desc = desc + '<p>El campo usuario está vació</p>'
@@ -102,35 +105,42 @@ function validarFormulario2(e) {
 		validation = false
 	}
 
+	// Si resulta que la bandera es falsa, se muestra el modal y se  coloca la info de los campos vacios
 	if (!validation) {
 		$('#modal-danger').modal('show');
 		document.getElementById("desc1").innerHTML = desc
 		return;
 	}
 
+	// Si la validación es correcta se continua con el flujo del programa y se muestra un modal de éxito
 	$('#modal-success').modal('show');
 	desc = '<p>Usuario: ' + user.value + '</p>' + '<p>Nombre: ' + name.value + '</p>' + '<p>Apellido: ' + last.value + '</p>' + '<p>Correo: ' + email.value + '</p>'
 	document.getElementById("desc2").innerHTML = desc
 }
 
-// Validación del formulario 3
+// Validar el formulario de productos
 function validarFormulario3(e){
+	// Se previene la acción por defecto del evento
 	e.preventDefault();
+	// Se obtiene el objeto que representa a los campos de entrada
 	var clave = document.getElementById('clave');
 	var nameP = document.getElementById('nameP');
 	var categoria = document.getElementById('categoria');
 	var precioV = document.getElementById('precioV');
 	var precioC = document.getElementById('precioC');
 
+	// Se quitan las clases de es válido
 	clave.classList.remove('is-invalid');
 	nameP.classList.remove('is-invalid');
 	categoria.classList.remove('is-invalid');
 	precioV.classList.remove('is-invalid');
 	precioC.classList.remove('is-invalid');
 
+	// Bandera de validación y descripción
 	let validation = true;
 	let desc = ''
 
+	// Validación de cada campo: si está vacio o no
 	if(clave.value.length == 0) {
 		clave.classList.add('is-invalid');
 		desc = desc + '<p>El campo clave está vació</p>'
@@ -161,18 +171,20 @@ function validarFormulario3(e){
 		validation = false
 	}
 
+	// Si resulta que la bandera es falsa, se muestra el modal y se  coloca la info de los campos vacios
 	if (!validation) {
 		$('#modal-danger').modal('show');
 		document.getElementById("desc1").innerHTML = desc
 		return;
 	}
 
+	// Si la validación es correcta se continua con el flujo del programa y se muestra un modal de éxito
 	$('#modal-success').modal('show');
 	desc = '<p>Clave: ' + clave.value + '</p>' + '<p>Nombre: ' + nameP.value + '</p>' + '<p>Precio de venta: ' + precioV.value + '</p>' + '<p>Precio de compra: ' + precioC.value + '</p>'
 	document.getElementById("desc2").innerHTML = desc
 }
 
-// Validación del formulario 4
+// Validar el formulario de categoria de productos
 function validarFormulario4(e){
 	e.preventDefault();
 	var clave = document.getElementById('clave');
@@ -186,6 +198,7 @@ function validarFormulario4(e){
 	let validation = true;
 	let desc = ''
 
+	// Validación de cada campo: si está vacio o no
 	if(clave.value.length == 0) {
 		clave.classList.add('is-invalid');
 		desc = desc + '<p>El campo clave de categoria está vacio</p>'
@@ -198,12 +211,14 @@ function validarFormulario4(e){
 		validation = false
 	}
 
+	// Si resulta que la bandera es falsa, se muestra el modal y se  coloca la info de los campos vacios
 	if (!validation) {
 		$('#modal-danger').modal('show');
 		document.getElementById("desc1").innerHTML = desc
 		return;
 	}
 
+	// Si la validación es correcta se continua con el flujo del programa y se muestra un modal de éxito
 	$('#modal-success').modal('show');
 	desc = '<p>Clave: ' + clave.value + '</p>' + '<p>Nombre: ' + catName.value + '</p>'
 	document.getElementById("desc2").innerHTML = desc

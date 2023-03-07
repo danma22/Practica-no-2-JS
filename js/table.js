@@ -1,6 +1,8 @@
 'use strict'
 
-var buton = document.getElementById("btn1")
+var buton = document.getElementById("btn1") // Boton para mostrar los datos de la tabla
+
+// Datos para la tabla
 const menu = [
     {
       id: 1,
@@ -75,18 +77,21 @@ const menu = [
   ];
 
 
-
+// Función para llenar la tabla 
 function fillTable(){
     let table = document.getElementById("contentTable")
+    // Contenido de la tabla con toda la información
     let contentTable = menu.map(function (p) {
         return '<tr><td>'+p.title+'</td><td>'+p.desc+'</td><td>'+p.clave+'</td><td>'+p.price+'</td></tr>'
     });
 
+    // Se une todo el contenido del array
     contentTable = contentTable.join("");
 
     table.innerHTML = contentTable
 }
 
+// Cuando se cargue la página se añade el evento del boton que llena la tabla
 document.addEventListener("DOMContentLoaded", function() {
   buton.addEventListener("click", function(){
     fillTable()

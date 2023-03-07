@@ -75,8 +75,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Registros
@@ -87,19 +87,43 @@
               <li class="nav-item">
                 <a href="regUsuarios.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registro de usuarios</p>
+                  <p>Usuarios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regClientes.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regCategoriasC.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorias de clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regProveedores.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proveedores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regCategoriasP.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorias de proveedores</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="regProductos.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registro de productos</p>
+                  <p>Productos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="regCategorias.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registro de categorias</p>
+                  <p>Categorias de producto</p>
                 </a>
               </li>
             </ul>
@@ -124,6 +148,26 @@
               </p>
             </a>
           </li>
+
+          <!-- Tabla de clientes -->
+          <li class="nav-item">
+            <a href="clientes.html" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Clientes
+              </p>
+            </a>
+          </li>
+
+          <!-- Tabla de proveedores -->
+          <li class="nav-item">
+            <a href="proveedores.html" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Proveedores
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -138,12 +182,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registro de categorias</h1>
+            <h1>Registro de categorias de producto</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-              <li class="breadcrumb-item active">Registro de categorias</li>
+              <li class="breadcrumb-item active">Registro de categorias de producto</li>
             </ol>
           </div>
         </div>
@@ -158,9 +202,9 @@
           <div class="col-md-10">
             <!-- /.card -->
             <!-- Horizontal Form -->
-            <div class="card">
-              <div class="card-header" style="background-color: #cd5c5c;">
-                <h3 class="card-title text-white">Registro para categorias</h3>
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title text-white">Registro de categorias de producto</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -189,7 +233,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn text-white" style="background-color: #cd5c5c;">Añadir</button>
+                  <button type="submit" class="btn btn-primary text-white">Añadir</button>
                   <button type="submit" class="btn btn-default float-right">Cancel</button>
                 </div>
                 <!-- /.card-footer -->
@@ -251,7 +295,7 @@
   <div class="modal-dialog">
     <div class="modal-content bg-success">
       <div class="modal-header">
-        <h4 class="modal-title">El usuario ha sido agregado exitosamente</h4>
+        <h4 class="modal-title">La categoria de productos ha sido agregado exitosamente</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
